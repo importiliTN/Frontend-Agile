@@ -1,0 +1,381 @@
+{
+  "version": 1,
+  "projects": {
+    "admin-dashboard": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/admin-dashboard",
+      "sourceRoot": "apps/admin-dashboard/src",
+      "prefix": "importili",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/admin-dashboard",
+            "index": "apps/admin-dashboard/src/index.html",
+            "main": "apps/admin-dashboard/src/main.ts",
+            "polyfills": "apps/admin-dashboard/src/polyfills.ts",
+            "tsConfig": "apps/admin-dashboard/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/admin-dashboard/src/favicon.ico",
+              "apps/admin-dashboard/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "apps/admin-dashboard/src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin-dashboard/src/environments/environment.ts",
+                  "with": "apps/admin-dashboard/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "admin-dashboard:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-dashboard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-dashboard:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/admin-dashboard/tsconfig.app.json",
+              "apps/admin-dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/admin-dashboard/src/test.ts",
+            "tsConfig": "apps/admin-dashboard/tsconfig.spec.json",
+            "karmaConfig": "apps/admin-dashboard/karma.conf.js",
+            "polyfills": "apps/admin-dashboard/src/polyfills.ts",
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "admin-dashboard-e2e": {
+      "root": "apps/admin-dashboard-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/admin-dashboard-e2e/protractor.conf.js",
+            "devServerTarget": "admin-dashboard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "admin-dashboard:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/admin-dashboard-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard-e2e/**"]
+          }
+        }
+      }
+    },
+    "user-dashboard": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/user-dashboard",
+      "sourceRoot": "apps/user-dashboard/src",
+      "prefix": "importili",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/user-dashboard",
+            "index": "apps/user-dashboard/src/index.html",
+            "main": "apps/user-dashboard/src/main.ts",
+            "polyfills": "apps/user-dashboard/src/polyfills.ts",
+            "tsConfig": "apps/user-dashboard/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/user-dashboard/src/favicon.ico",
+              "apps/user-dashboard/src/assets"
+            ],
+            "styles": [
+              "apps/user-dashboard/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/user-dashboard/src/environments/environment.ts",
+                  "with": "apps/user-dashboard/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "user-dashboard:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "user-dashboard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "user-dashboard:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/user-dashboard/tsconfig.app.json",
+              "apps/user-dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/user-dashboard/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/user-dashboard/src/test.ts",
+            "tsConfig": "apps/user-dashboard/tsconfig.spec.json",
+            "karmaConfig": "apps/user-dashboard/karma.conf.js",
+            "polyfills": "apps/user-dashboard/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "user-dashboard-e2e": {
+      "root": "apps/user-dashboard-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/user-dashboard-e2e/protractor.conf.js",
+            "devServerTarget": "user-dashboard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "user-dashboard:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/user-dashboard-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/user-dashboard-e2e/**"]
+          }
+        }
+      }
+    },
+    "core-data": {
+      "projectType": "library",
+      "root": "libs/core-data",
+      "sourceRoot": "libs/core-data/src",
+      "prefix": "importili",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core-data/tsconfig.lib.json",
+              "libs/core-data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core-data/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core-data/src/test.ts",
+            "tsConfig": "libs/core-data/tsconfig.spec.json",
+            "karmaConfig": "libs/core-data/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "login": {
+      "projectType": "library",
+      "root": "libs/login",
+      "sourceRoot": "libs/login/src",
+      "prefix": "importili",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/login/tsconfig.lib.json",
+              "libs/login/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/login/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/login/src/test.ts",
+            "tsConfig": "libs/login/tsconfig.spec.json",
+            "karmaConfig": "libs/login/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "signup": {
+      "projectType": "library",
+      "root": "libs/signup",
+      "sourceRoot": "libs/signup/src",
+      "prefix": "importili",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/signup/tsconfig.lib.json",
+              "libs/signup/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/signup/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/signup/src/test.ts",
+            "tsConfig": "libs/signup/tsconfig.spec.json",
+            "karmaConfig": "libs/signup/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "posting": {
+      "projectType": "library",
+      "root": "libs/posting",
+      "sourceRoot": "libs/posting/src",
+      "prefix": "importili",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/posting/tsconfig.lib.json",
+              "libs/posting/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/posting/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/posting/src/test.ts",
+            "tsConfig": "libs/posting/tsconfig.spec.json",
+            "karmaConfig": "libs/posting/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "karma"
+    }
+  },
+  "defaultProject": "admin-dashboard"
+}

@@ -1,0 +1,48 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav id="sidenav">
+    <mat-nav-list>
+      <importili-post-detail [post]="this.chosenPost"></importili-post-detail>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <div class="container">
+      <div class="list-group">
+        <a *ngFor="let post of list" class="list-group-item list-group-item-action flex-column align-items-start {{
+            post.type
+          }}" (click)="toggle(post)">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1 title">{{ post.title }}</h5>
+            <small><b>{{post.montant}} TND</b></small>
+          </div>
+          <small>{{ post.type }}</small>
+          <p class="mb-1">{{ post.description }}</p>
+        </a>
+      </div>
+
+      <ul class="pagination justify-content-end" style="margin:20px 0" *ngIf="list">
+        <li *ngIf="page>0" class="page-item">
+          <a class="page-link" (click)="goTo(0)">First</a>
+        </li>
+        <li *ngIf="page > 0" class="page-item">
+          <a class="page-link" (click)="goTo(page-1)" >Previous</a>
+        </li>
+        <li *ngIf="page > 0" class="page-item">
+          <a class="page-link" (click)="goTo(page-1)">{{ page }}</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" >{{ page+1 }}</a>
+        </li>
+        <li *ngIf="page+1 < total" class="page-item">
+          <a class="page-link" (click)="goTo(page+1)">{{ page + 2 }}</a>
+        </li>
+        <li *ngIf="page+1 < total" class="page-item">
+          <a class="page-link" (click)="goTo(page+1)">Next</a>
+        </li>
+        <li *ngIf="page+1 < total" class="page-item">
+          <a class="page-link" (click)="goTo(total-1)">Last</a>
+        </li>
+      </ul>
+       </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

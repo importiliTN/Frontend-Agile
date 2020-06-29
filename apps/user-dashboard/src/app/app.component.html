@@ -1,0 +1,4 @@
+<importili-header [logged]="loggedIn"></importili-header>
+<importili-login-component *ngIf="!loggedIn"></importili-login-component>
+<importili-signup *ngIf="!loggedIn"></importili-signup>
+<router-outlet id="app"></router-outlet>

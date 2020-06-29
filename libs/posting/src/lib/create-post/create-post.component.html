@@ -1,0 +1,69 @@
+
+<div id="create" class="container">
+    <h1>New post</h1>
+    <br>
+    <div *ngIf="!submitted">
+      <form (ngSubmit)="f.valid && onSubmit()" name="form" #f="ngForm">
+
+        <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" required [(ngModel)]="post.title" name="title" minlength="3"
+              #title="ngModel">
+          <div class="alert alert-danger"  *ngIf="f.submitted&&title.errors">
+            <div *ngIf="title.errors.required">Title is required</div>
+            <div *ngIf="title.errors.minlength">Title must be at least 3 characters long</div>
+          </div>
+        </div>
+
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea matInput cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        style="overflow:hidden"
+        class="form-control" id="description" name="description"
+        [(ngModel)]="post.description" #desc="ngModel" maxlength="1024"></textarea>
+
+      </div>
+
+      <div class="form-group">
+        <label for="montant">Amount</label>
+        &nbsp;
+        <input type="number" class="form-control" step="0.01" id="montant" name="montant" [(ngModel)]="post.montant" #montant="ngModel">
+      </div>
+
+
+          <div class="form-group" >
+
+            <div aria-label="Select an option" name="type"  class="row">
+              <div class="col-md-4">
+                <span class="text-success">Buying</span>
+                <input id="buy" type="radio" class="custom-radio" name="type" value="Buying" [(ngModel)]="post.type" #radio="ngModel" required/>
+              </div>
+              <div class="col-md-4">
+                <span class="text-primary">Selling</span>
+                <input id="sell" type="radio" class="custom-radio" name="type" value="Selling" [(ngModel)]="post.type" #radio="ngModel" required/>
+              </div>
+            </div>
+           <br>
+          <div *ngIf="f.submitted && radio.errors">
+              <div class="alert alert-danger"  *ngIf="radio.errors.required">Please specify the type of your post</div>
+          </div>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+      </form>
+    </div>
+
+  <div *ngIf="submitted">
+    <div class="alert alert-success">Your post was submitted successfully!
+    <br>
+    <a routerLink="/list/0" routerLinkActive="active">Return to post list</a>
+    </div>
+
+  </div>
+</div>

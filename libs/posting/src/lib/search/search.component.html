@@ -1,0 +1,52 @@
+<div class="container">
+
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="keywords">Keywords:</label>
+            <input type="text" class="form-control" name="keywords" id="keywords" [(ngModel)]="query.keywords"
+                #keywords="ngModel" />
+        </div>
+
+        <div aria-label="Select an option" name="type"  class="row" class="form-group">
+            <div class="col-md-4">
+              <span class="text-success">Buying</span>
+              <input id="buy" type="radio" class="custom-radio" name="type" value="Buying" [(ngModel)]="query.type" #radio="ngModel" required/>
+            </div>
+            <div class="col-md-4">
+              <span class="text-primary">Selling</span>
+              <input id="sell" type="radio" class="custom-radio" name="type" value="Selling" [(ngModel)]="query.type" #radio="ngModel" required/>
+            </div>
+          </div>
+
+
+        <label for="montantg">Montant:</label>
+        <div id="montantg" class="form-group">
+
+            <select name="borne" id="borne" [(ngModel)]="query.borne" #borne="ngModel">
+                <option value=">">More than</option>
+                <option value="<">Less than</option>
+            </select>
+            &nbsp;
+            <input type="number" class="form-control" step="0.01" name="montant" id="montant"
+                [(ngModel)]="query.montant" #montant="ngModel">
+
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+
+    <div *ngIf="submitted">
+
+        <div *ngIf="!noResult">
+            <importili-post-list [list]="result" [total]="total" [searchMode]="true" (pageChange)="goTo($event)"></importili-post-list>
+        </div>
+
+        <div *ngIf="noResult">
+            Aucun résultat trouvé
+        </div>
+
+    </div>
+
+</div>

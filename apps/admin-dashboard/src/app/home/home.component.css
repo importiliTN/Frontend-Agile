@@ -1,0 +1,19 @@
+#home {
+  background-image: url("../../assets/img/background.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-size: 100%;
+}
+
+.title {
+  padding-top: 15%;
+  font-family: cursive, bold;
+  font-size: 700%;
+  color: forestgreen;
+}
+
+.subtitle {
+  font-size: 300%;
+  margin-top: 1%;
+  color : beige;
+}
